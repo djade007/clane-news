@@ -10,3 +10,4 @@ Built with Laravel and Dockerised, this api project can be installed by followin
 
 ## Additional Packages to The Laravel Framework
 - **[jwt-auth](https://github.com/tymondesigns/jwt-auth/tree/1.0.0-rc.5)**
+- **[spatie/laravel-sluggable](https://github.com/spatie/laravel-sluggable)**
