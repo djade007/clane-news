@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3'
 
 services:
   laravel-app:
@@ -15,9 +15,7 @@ services:
     ports:
       - ${HOST_PORT}:80
     networks:
-      backend:
-        aliases:
-          - laravel-app
+      - backend-network
 
   mysql-db:
     image: mysql:5.7
@@ -30,10 +28,7 @@ services:
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
     networks:
-      backend:
-        aliases:
-          - db
+      - backend-network
 
 networks:
-  backend:
-    name: backend-network
+  backend-network:
