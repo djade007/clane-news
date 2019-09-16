@@ -1,6 +1,6 @@
 #!/bin/bash
 
-command="composer install && cp .env.example .env && php artisan setup"
+command="composer install && php artisan setup"
 
 echo "$command"
 docker exec -it laravel-app bash -c "sudo -u devuser /bin/bash -c \"$command\""
