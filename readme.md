@@ -13,6 +13,19 @@ Built with Laravel and Dockerised, this api project can be installed by followin
 - Run the project setup script `./setup`
 
 
+## Endpoints
+
+| Name   | Method      | URL                                          | Protected |
+| ---    | ---         | ---                                          | ---       |
+| List   | `GET`       | `http://localhost:8000/articles`             | ✘         |
+| Create | `POST`      | `http://localhost:8000/articles`             | ✓         |
+| Get    | `GET`       | `http://localhost:8000/articles/{id}`        | ✘         |
+| Update | `PUT/PATCH` | `http://localhost:8000/articles/{id}`        | ✓         |
+| Delete | `DELETE`    | `http://localhost:8000/articles/{id}`        | ✓         |
+| Rate   | `POST`      | `http://localhost:8000/articles/{id}/rating` | ✘         |
+
+
+
 ## Helper Scripts
 Some helpers scripts were created to ease working with the project interface with docker.
 - `./setup` - To setup the entire project.
