@@ -107,6 +107,8 @@ class ArticleTest extends TestCase
         $response = $this->delete('/api/articles/'.$article->id);
 
         $response->assertStatus(200);
+
+        $this->assertSoftDeleted($article);
     }
 
     /** @test */
