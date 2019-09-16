@@ -22,6 +22,6 @@ Some helpers scripts were created to ease working with the project interface wit
 - `./container` - To ssh into the docker container
 
 
-## Additional Packages to The Laravel Framework
+## Additional Packages used with Laravel Framework
 - **[jwt-auth](https://github.com/tymondesigns/jwt-auth/tree/1.0.0-rc.5)**
 - **[spatie/laravel-sluggable](https://github.com/spatie/laravel-sluggable)**
