@@ -1,6 +1,6 @@
 ## About Clane News
 
-Clane news is a platform that gives you upto date information about the latest information happening around financial technologies. 
+Clane news is a platform that gives you the freedom to read breaking and trending news stories from Nigeria, and around the world. 
 
 ## Installing Clane news api
 

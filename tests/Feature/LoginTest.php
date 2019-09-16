@@ -2,21 +2,40 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LoginTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
-     * A basic feature test example.
      * @test
-     * @return void
      */
-    public function example()
+    public function login_requires_email_and_password()
     {
-        $response = $this->get('/');
+        $response = $this->post('/api/login');
+
+        $response->assertStatus(422);
+    }
+
+    /**
+     * @test
+     */
+    public function user_can_login_and_auth_token_is_returned_after_registration()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->post('/api/login', [
+            'email' => $user->email,
+            'password' => 'password'
+        ]);
 
         $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            'access_token', 'token_type', 'expires_in'
+        ]);
     }
 }
