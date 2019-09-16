@@ -81,18 +81,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Clane News
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Click Me</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <p>Welcome to Clane News API Project</p>
+                    <p>Simply make your api calls to /api</p>
+                    <p>Ensure you add Accept: <strong>application/json</strong> to the headers</p>
                 </div>
             </div>
         </div>
