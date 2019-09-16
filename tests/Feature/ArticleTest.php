@@ -29,7 +29,7 @@ class ArticleTest extends TestCase
         $this->actingAs($this->user, 'api');
 
         $data = [
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph(10, true),
         ];
 
@@ -48,7 +48,7 @@ class ArticleTest extends TestCase
     public function guests_can_not_create_article()
     {
         $response = $this->post('/api/articles', [
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph(10, true),
         ]);
 
