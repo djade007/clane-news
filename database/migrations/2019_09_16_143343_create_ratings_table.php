@@ -15,6 +15,8 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('article_id');
+            $table->foreign('article_id')->references('id')->on('articles');
             $table->unsignedTinyInteger('rating'); // 1 - 10
             $table->unsignedInteger('user_id')->nullable();
             $table->uuid('guest_id')->nullable();

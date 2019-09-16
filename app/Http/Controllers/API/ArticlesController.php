@@ -5,15 +5,17 @@ namespace App\Http\Controllers\API;
 use App\Article;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ArticleResource;
+use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\AlignFormatter;
 
 class ArticlesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index', 'show');
+        $this->middleware('auth:api')->except('index', 'show', 'rate');
     }
 
     /**
@@ -31,7 +33,7 @@ class ArticlesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,7 +53,7 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return ArticleResource
      */
     public function show($id)
@@ -64,8 +66,8 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return ArticleResource
      */
     public function update(Request $request, $id)
@@ -83,6 +85,36 @@ class ArticlesController extends Controller
         $article->update($request->only('title', 'content'));
 
         return new ArticleResource($article);
+    }
+
+    /**
+     * Rate an article
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rate(Request $request, $id)
+    {
+        $request->validate([
+            'rating' => 'integer|min:1|max:10'
+        ]);
+
+        $data = [
+            'rating' => $request->input('rating')
+        ];
+
+        $article = Article::query()->findOrFail($id);
+
+        if (Auth::check()) {
+            $data['user_id'] = Auth::id();
+        } else { // guest
+            $data['guest_id'] = Str::uuid()->toString();
+        }
+
+        $rating = $article->ratings()->updateOrCreate($data);
+
+        return response(['id' => $rating->id, 'rating' => $rating->rating], 201);
     }
 
     /**
