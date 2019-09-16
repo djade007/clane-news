@@ -9,7 +9,10 @@ docker-compose.yml boots up php-apache (mount app files) and mysql (mount db fil
 ## Installing Clane news api
 
 Built with Laravel and Dockerised, this api project can be installed by following the simple steps below.
+- `cp .env.example .env`
+
 - `docker-compose build && docker-compose up -d && docker-compose logs -f`
+
 - Run the project setup script `./setup`
 
 
