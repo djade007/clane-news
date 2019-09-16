@@ -18,8 +18,9 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->unsignedBigInteger('user_id');
+
             $table->foreign('user_id')->references('id')->on('users');
-            $table->float('average_rating');
+            $table->float('average_rating')->default(0.0);
             $table->string('slug')->unique()->nullable();
             $table->softDeletes();
             $table->timestamps();

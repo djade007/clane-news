@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Article extends Model
 {
-    use HasSlug;
+    use HasSlug, SoftDeletes;
 
     protected $guarded = ['id'];
 
