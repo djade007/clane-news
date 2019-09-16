@@ -22,7 +22,7 @@ class Rating extends Model
 
             // recalculate total ratings
             $article->update([
-                'average_rating' => $article->ratings->sum('rating') / $article->ratings->count() / 100
+                'average_rating' => $article->ratings->sum('rating') / $article->ratings->count()
             ]);
         });
     }
